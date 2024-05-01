@@ -3,7 +3,6 @@ import sys
 import csv
 import os
 
-# Constants
 WIDTH, HEIGHT = 400, 400
 LINE_WIDTH = 5
 BOARD_ROWS, BOARD_COLS = 3, 3
@@ -13,7 +12,6 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
-# Define button parameters
 BUTTON_WIDTH, BUTTON_HEIGHT = 200, 50
 BUTTON_MARGIN = 20
 PLAY_BUTTON_POS = (WIDTH // 2 - BUTTON_WIDTH // 2, HEIGHT // 2 - BUTTON_HEIGHT - BUTTON_MARGIN)
@@ -167,7 +165,7 @@ class Controller:
                     if self.model.winner or self.model.winner == 'draw':
                         self.update_leaderboard()
                         self.view.draw_winner(self.model.winner)
-                        self.view.game_started = False  # Stop the game
+                        self.view.game_started = False 
 
     def show_leaderboard(self):
         if not os.path.exists(self.leaderboard_file):
