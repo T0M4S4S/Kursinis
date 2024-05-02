@@ -17,20 +17,12 @@ BUTTON_MARGIN = 20
 PLAY_BUTTON_POS = (WIDTH // 2 - BUTTON_WIDTH // 2, HEIGHT // 2 - BUTTON_HEIGHT - BUTTON_MARGIN)
 LEADERBOARD_BUTTON_POS = (WIDTH // 2 - BUTTON_WIDTH // 2, HEIGHT // 2 + BUTTON_MARGIN)
 
+
 class Model:
-    _instance = None
-
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
-
     def __init__(self):
-        if not hasattr(self, 'initialized'):
-            self.board = [['' for _ in range(BOARD_COLS)] for _ in range(BOARD_ROWS)]  
-            self.player = 'X'
-            self.winner = None
-            self.initialized = True
+        self.board = [['' for _ in range(BOARD_COLS)] for _ in range(BOARD_ROWS)]
+        self.player = 'X'
+        self.winner = None
 
     def reset_board(self):
         self.board = [['' for _ in range(BOARD_COLS)] for _ in range(BOARD_ROWS)]
@@ -40,10 +32,7 @@ class Model:
     def make_move(self, row, col):
         if self.board[row][col] == '' and not self.winner:
             self.board[row][col] = self.player
-            if self.player == 'X':
-                self.player = 'O'
-            else:
-                self.player = 'X'
+            self.player = 'O' if self.player == 'X' else 'X'
             self.check_winner()
 
     def check_winner(self):
@@ -57,13 +46,10 @@ class Model:
             self.winner = self.board[0][0]
         if self.board[0][2] == self.board[1][1] == self.board[2][0] != '':
             self.winner = self.board[0][2]
-        draw = True
-        for row in self.board:
-            if '' in row:
-                draw = False
-                break
+        draw = all('' not in row for row in self.board)
         if draw:
             self.winner = 'draw'
+
 
 class View:
     def __init__(self):
@@ -131,6 +117,7 @@ class View:
     def update(self):
         pygame.display.update()
 
+
 class Controller:
     def __init__(self, model, view):
         self.model = model
@@ -165,7 +152,7 @@ class Controller:
                     if self.model.winner or self.model.winner == 'draw':
                         self.update_leaderboard()
                         self.view.draw_winner(self.model.winner)
-                        self.view.game_started = False 
+                        self.view.game_started = False
 
     def show_leaderboard(self):
         if not os.path.exists(self.leaderboard_file):
@@ -193,6 +180,7 @@ class Controller:
             writer = csv.DictWriter(file, fieldnames=['Winner'])
             writer.writerow({'Winner': self.model.winner})
 
+
 def main():
     pygame.init()
     model = Model()
@@ -204,6 +192,7 @@ def main():
         view.draw_buttons()
         controller.handle_events()
         view.update()
+
 
 if __name__ == "__main__":
     main()
