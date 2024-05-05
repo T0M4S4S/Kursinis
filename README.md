@@ -28,7 +28,6 @@ This is a simple Tic-Tac-Toe game implemented using Pygame. It allows two player
 5. Click the "Leaderboard" button to view the current leaderboard.
 
 ## Files
-- `main.py`: Main script to run the game.
 - `kryziukai.py`: Contains the Model, View, and Controller classes for the game.
 - `pradzios.png`: Image file for the game logo.
 - `leaderboard.csv`: CSV file to store the leaderboard data.
