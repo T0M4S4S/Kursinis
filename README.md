@@ -42,6 +42,8 @@ This is a simple Tic-Tac-Toe game implemented using Pygame. It allows two player
   - The Controller class encapsulates the event handling logic and interaction between the model and view.
 
 - In this code I am using two design patterns one of the is Singleton and Factory method. Singleton we can see here:
+
+  
 class Model:
     _instance = None
 
@@ -57,7 +59,11 @@ class Model:
             self.player = 'X'
             self.winner = None
             self.initialized = True
+
+            
 And the factory method is herte:
+
+
 class View:
 
     def create_button(self, text, position):
