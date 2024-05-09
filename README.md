@@ -1,6 +1,6 @@
 # Kursinis
 # Atlieka: Tomas Armalis EAf-23
-# Tic-Tac-Toe Game
+# Kryžiukai Nuliukai žaidimas
 
 ## Description
 This is a simple Tic-Tac-Toe game implemented using Pygame. It allows two players to take turns marking the spaces in a 3x3 grid with their respective symbols (X or O). The game checks for a winner after each move and displays the winner or a draw if the game ends in a tie. It also includes a leaderboard to track the number of wins for each player.
