@@ -2,6 +2,7 @@ import pygame
 import sys
 import csv
 import os
+import time
 
 # Constants
 WIDTH, HEIGHT = 400, 400
@@ -55,7 +56,7 @@ class Model:
 class View:
     def __init__(self):
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption("Tic Tac Toe")
+        pygame.display.set_caption("Kryžiukai Nuliukai")
         self.font = pygame.font.SysFont(None, 30)
         self.game_started = False
         self.pradzios_image = pygame.image.load("pradzios.png")
@@ -105,9 +106,9 @@ class View:
     def draw_winner(self, winner):
         if winner:
             if winner == 'draw':
-                text = self.font.render("It's a draw!", True, WHITE)
+                text = self.font.render("It's a draw!", True, BLACK)
             else:
-                text = self.font.render(f"Player {winner} wins!", True, WHITE)
+                text = self.font.render(f"Player {winner} wins!", True, BLACK)
             text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
             self.screen.blit(text, text_rect)
 
