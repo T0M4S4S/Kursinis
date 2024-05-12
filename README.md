@@ -61,7 +61,7 @@ class Model:
             self.initialized = True
 
             
-And the factory method is herte:
+And the factory method is here:
 
 
 class View:
