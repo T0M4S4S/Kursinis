@@ -41,27 +41,7 @@ This is a simple Tic-Tac-Toe game implemented using Pygame. It allows two player
   - The View class encapsulates the display logic and UI elements (buttons, board drawing).
   - The Controller class encapsulates the event handling logic and interaction between the model and view.
 
-- In this code I am using two design patterns one of the is Singleton and Factory method. Singleton we can see here:
-
-  
-class Model:
-    _instance = None
-
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
-
-    def __init__(self):
-        # Initialize only if the instance is not already created
-        if not hasattr(self, 'initialized'):
-            self.board = [['' for _ in range(BOARD_COLS)] for _ in range(BOARD_ROWS)]
-            self.player = 'X'
-            self.winner = None
-            self.initialized = True
-
-            
-And the factory method is here:
+- In this code I am using one design patterns. The factory method is here:
 
 
 class View:
